@@ -91,7 +91,9 @@ Return the resulting output array.
   const fizzbuzz = (arr) => {
     // Solution code here...
       let resultArr = [];
-      arr.forEach((item, newItem) => {
+      arr.forEach((item, newItem
+        
+        ) => {
         if (item % 3 === 0 && item % 5 === 0) {
           resultArr.push('Fizz Buzz');
         }
