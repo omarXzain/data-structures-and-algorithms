@@ -9,6 +9,25 @@ Build a simple express server. Connect a '/hello' route that sends a greeting of
 const createServer = () => {
   // Solution code here...
 
+  const express = require('express');
+  const app = express();
+  app.get('/hello', (req, res) => {
+    res.send('hello');
+  });
+  app.get('/aboutme', (req, res) => {
+    res.send('this is a test');
+  });
+  app.get('/favoritefoods', (req, res) => {
+    let favorite = ['KFC', 'fried', 'pizza'];
+    favorite.map(item => {
+      res.send(item);
+    });
+  });
+
+  app.get('*', (req, res) => {
+    res.status(404).send('Not Found');
+  });
+
   var server = app.listen(3301, function () {
     var port = server.address().port;
     console.log('Example app listening at port', port);
@@ -79,6 +98,18 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 
 const divisibleByFiveTwoToThePower = (input) => {
   // Solution code here...
+  return input.reduce((acccumulatorMain, currentValueMain) => {
+    let tempaccumulator = currentValueMain.reduce((acccumulator, currentValue) => {
+      if (typeof (currentValue) !== 'number' || currentValue % 5 !== 0) {
+        return acccumulator;
+      } else {
+        acccumulator.push(Math.pow(2, currentValue));
+        return acccumulator;
+      }
+    }, []);
+    acccumulatorMain.push(tempaccumulator);
+    return acccumulatorMain;
+  }, []);
 };
 
 /* ------------------------------------------------------------------------------------------------
